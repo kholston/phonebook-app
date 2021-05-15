@@ -61,7 +61,14 @@ app.post('/api/persons',(request, response)=>{
   const body = request.body
   if(!body.name || !body.number){
     return response.status(400).json({
-      error: "both name and number needed"
+      error: "both name and number required"
+    })
+  }
+
+
+  if(persons.some(person => person.name === body.name)){
+    return response.status(400).json({
+      error: "name must be unique"
     })
   }
 
