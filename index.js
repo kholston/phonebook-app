@@ -17,7 +17,11 @@ morgan.token('content', (request)=>{
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :content'))
 
 app.get('/info', (request, response)=>{
-  response.send(`<p>Phonebook has info for ${persons.length} people.</p><p>${new Date()}</p>`)
+  Person.find({})
+    .then(persons=>{
+      response.send(`<p>Phonebook has info for ${persons.length} people.</p><p>${new Date()}</p>`)
+    })
+  
 })
 
 app.get('/api/persons', (request,response)=>{
