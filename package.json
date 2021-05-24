@@ -12,7 +12,9 @@
     "build:ui": "rm -rf build && cd ../fullstack-open/part2/phonebook/ && npm run build --prod && cp -r build ../../../phonebook-backend/",
     "deploy": "git push heroku main",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
-    "log:prod": "heroku logs --tail"
+    "log:prod": "heroku logs --tail",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "author": "Ken Holston",
   "license": "MIT",
@@ -25,6 +27,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "eslint": "^7.27.0",
     "nodemon": "^2.0.7"
   }
 }
